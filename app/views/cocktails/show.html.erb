@@ -9,7 +9,13 @@
 </p>
 
 
-<%= cl_image_tag @cocktail.photo.key, crop: :fill, width: 200 %>
+<%=
+  if @cocktail.photo.attached?
+    cl_image_tag @cocktail.photo.key, crop: :fill, width: 200
+  else
+    image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg", width: 200
+  end
+%>
 
 <br>
 <%= link_to "add a dose of something",new_cocktail_dose_path(@cocktail)%>
